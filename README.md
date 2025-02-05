@@ -1,6 +1,6 @@
-# Div - Website Builder You're Going to Love
+<p align="center"><img src="https://raw.githubusercontent.com/projectdiv/div/main/art/logo.png" alt="div logo" height="40" width="auto" /></p>
 
-<p><img src="https://raw.githubusercontent.com/projectdiv/div/main/art/logo.png" alt="div logo" /></p>
+# Div - The Website Builder You're Going to Love
 
 A website builder you’ll actually enjoy using. No more bloated frameworks, complicated configs, or dependency chaos. We're taking back the art and reclaiming the throne of crafting simple Static HTML websites 👑
 
