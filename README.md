@@ -6,7 +6,7 @@ A website builder you’ll actually enjoy using. No more bloated frameworks, com
 
 ## 🛠️ Setup in a Snap
 
-Make sure you have Node installed on your machine, and then copy/paste the following command in your terminal:
+Make sure you have <a href="https://nodejs.org" target="_blank">node</a> installed on your machine. Then copy/paste the following command in your terminal:
 
 ```
 npm install -g div
@@ -16,7 +16,7 @@ Now you'll have the **div** command available on your machine, allowing you to r
 
 - **div new folder-name** - Create a new website with the default starter template
 - **div dev** - Start up a dev environment for your website
-- **div build** - Build a production ready version of your website (available in the `_site` directory)
+- **div build** - Build a production ready version of your website (available in the `site` directory)
 
 Next, head on over to [the official documentation](https://static.devdojo.com/docs) to learn more about building your site.
 

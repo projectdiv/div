@@ -4,7 +4,9 @@ const fs = require('fs-extra');
 const path = require('path');
 
 function executeCommand(command) {
-    return execSync(command, { encoding: 'utf8' });
+    return execSync(command, {
+        encoding: 'utf8'
+    });
 }
 
 function cleanTestDirectory() {
@@ -26,9 +28,9 @@ function waitForDirectory(dir, maxAttempts = 30) {
     return false;
 }
 
-describe('bin/static CLI', () => {
+describe('bin/div CLI', () => {
     jest.setTimeout(30000); // Set timeout to 30 seconds for all tests
-    
+
     beforeEach(() => {
         process.env.NODE_ENV = 'test';
         cleanTestDirectory();
@@ -39,16 +41,16 @@ describe('bin/static CLI', () => {
     });
 
     it('should return version', () => {
-        const output = executeCommand('./bin/static --version');
+        const output = executeCommand('./bin/div --version');
         expect(output.trim()).toBe(packageJson.version);
     });
 
     it('should create a new project', () => {
-        const output = executeCommand('./bin/static new testProject');
-        
+        const output = executeCommand('./bin/div new testProject');
+
         // Wait for project directory to be ready
         expect(waitForDirectory('testProject')).toBe(true);
-        
+
         expect(output.trim()).toBe([
             "New setup initialized",
             "Downloading starter template",
@@ -61,19 +63,19 @@ describe('bin/static CLI', () => {
 
     it('should build project', () => {
         // First create the project
-        executeCommand('./bin/static new testProject');
-        
+        executeCommand('./bin/div new testProject');
+
         // Wait for project to be ready
         expect(waitForDirectory('testProject')).toBe(true);
-        
+
         // Ensure we're in a clean state
         if (fs.existsSync(path.join('testProject', '_site'))) {
             fs.removeSync(path.join('testProject', '_site'));
         }
-        
-        const output = executeCommand('cd testProject && ../bin/static build relative');
+
+        const output = executeCommand('cd testProject && ../bin/div build relative');
         expect(output.trim()).toBe("Successfully built your new static website 🤘");
-        
+
         // Verify build output exists
         expect(fs.existsSync(path.join('testProject', '_site'))).toBe(true);
     });

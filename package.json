@@ -1,7 +1,7 @@
 {
-    "name": "@devdojo/static",
-    "version": "1.0.31",
-    "description": "Static Site Generator",
+    "name": "div",
+    "version": "0.0.1",
+    "description": "Website Builder",
     "main": "index.js",
     "scripts": {
         "dev": "concurrently --kill-others \"node index.js\" \"npx esbuild ./src/assets/js/main.js --bundle --outfile=./build/assets/js/main.js --watch\"",
@@ -10,13 +10,18 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/thedevdojo/static.git"
+        "url": "git+https://github.com/projectdiv/div.git"
     },
     "keywords": [
-        "static",
-        "site",
-        "generator",
-        "static",
+        "div",
+        "website",
+        "builder",
+        "website builder",
+        "website creator",
+        "static site generator",
+        "static website generator",
+        "static websites",
+        "static site",
         "site",
         "generator"
     ],
@@ -49,10 +54,10 @@
     "author": "Tony Lea",
     "license": "ISC",
     "bin": {
-        "static": "bin/static"
+        "div": "bin/div"
     },
     "bugs": {
-        "url": "https://github.com/thedevdojo/static/issues"
+        "url": "https://github.com/projectdiv/div/issues"
     },
-    "homepage": "https://github.com/thedevdojo/static#readme"
+    "homepage": "https://github.com/projectdiv/div#readme"
 }
