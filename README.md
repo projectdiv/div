@@ -2,7 +2,7 @@
 
 # Say Hello to Div 👋
 
-A website builder you’ll actually enjoy using. No more bloated frameworks, complicated configs, or dependency chaos. We're taking back the art and reclaiming the throne of crafting simple Static HTML websites 👑
+A website builder you’ll actually enjoy using. No more bloated frameworks, complicated configs, or dependency chaos. We're taking back the art and reclaiming the throne of crafting simple HTML websites 👑
 
 ## 🛠️ Setup in a Snap
 
@@ -18,7 +18,7 @@ Now you'll have the **div** command available on your machine, allowing you to r
 - **div dev** - Start up a dev environment for your website
 - **div build** - Build a production ready version of your website (available in the `site` directory)
 
-Next, head on over to [the official documentation](https://static.devdojo.com/docs) to learn more about building your site.
+Next, head on over to [the official documentation](https://docs.div.so) to learn more about building your site.
 
 ## 🖐️ Five reasons this might just be your jam!
 
@@ -135,6 +135,4 @@ Now, you can easily loop through this collection:
 
 # Learn More
 
-You can learn about all the features available in Static by visiting the [official documentation](https://static.devdojo.com/docs). You may also be interested in checking out some of the [templates here](https://static.devdojo.com/templates).
-
-Static HTML is King 👑
+You can learn about all the features available by visiting the [official documentation](https://docs.div.so). You may also be interested in checking out some of the [templates here](https://div.so/templates).
