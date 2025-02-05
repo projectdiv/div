@@ -11,10 +11,9 @@
 //
 //********** */
 
-const templates = [
-    {
-        slug: 'starter',
-        repo: 'https://github.com/static-templates/starter'
+const templates = [{
+        slug: 'welcome',
+        repo: 'https://github.com/projectdiv/template-welcome'
     },
     {
         slug: 'aria',
@@ -35,9 +34,9 @@ const templates = [
 ];
 
 module.exports = {
-    get(template_slug){
-        for(let i=0; i < templates.length; i++){
-            if(templates[i].slug == template_slug){
+    get(template_slug) {
+        for (let i = 0; i < templates.length; i++) {
+            if (templates[i].slug == template_slug) {
                 return templates[i];
             }
         }

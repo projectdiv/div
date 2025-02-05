@@ -3,7 +3,9 @@ const request = require('superagent');
 const globalModulesPath = require("global-modules-path");
 const process = require('process');
 const admZip = require('adm-zip');
-const { exec } = require("child_process");
+const {
+    exec
+} = require("child_process");
 const openurl = require('openurl');
 const path = require('path');
 const templates = require('./templates.js');
@@ -16,18 +18,22 @@ module.exports = {
     },
     createFolder(folderName) {
         console.log('creating new folder ' + folderName);
-        fs.mkdir('./' + folderName , { recursive: true }, (err) => {
+        fs.mkdir('./' + folderName, {
+            recursive: true
+        }, (err) => {
             if (err) throw err;
-          });
+        });
     },
-    newProject(folderName, template = '--starter') {
+    newProject(folderName, template = '--welcome') {
         console.log('New setup initialized');
         template = templates.get(template.replace('--', ''));
         const templateZipFile = `${template.repo}/archive/${zipFile}`;
         const repoName = template.repo.split('/').pop();
-        
+
         try {
-            fs.mkdirSync('./' + folderName, { recursive: true });
+            fs.mkdirSync('./' + folderName, {
+                recursive: true
+            });
             process.chdir(process.cwd() + '/' + folderName);
         } catch (err) {
             console.error('Failed to create or change to project directory:', err);
@@ -35,7 +41,7 @@ module.exports = {
         }
 
         console.log('Downloading ' + template.slug + ' template');
-        
+
         return new Promise((resolve, reject) => {
             const stream = request
                 .get(templateZipFile)
@@ -56,7 +62,7 @@ module.exports = {
                     console.log('Extracting template zip file');
                     zip.extractAllTo(process.cwd());
                     console.log('Finished unzipping');
-                    
+
                     fs.unlinkSync(`./${zipFile}`);
 
                     const sourceDir = path.join(process.cwd(), repoName + '-main');
@@ -69,7 +75,9 @@ module.exports = {
                     for (const file of files) {
                         const sourcePath = path.join(sourceDir, file);
                         const destPath = path.join(process.cwd(), file);
-                        fs.moveSync(sourcePath, destPath, { overwrite: true });
+                        fs.moveSync(sourcePath, destPath, {
+                            overwrite: true
+                        });
                     }
                     fs.removeSync(sourceDir);
 
@@ -82,7 +90,7 @@ module.exports = {
 
                     // Start dev server for non-test environment
                     const devServer = require(require("global-modules-path").getPath("@devdojo/static") + '/src/dev.js');
-                    
+
                     console.log('processing template builds and starting dev server');
                     exec("cd " + process.cwd() + " && npm install && static build", (err, stdout, stderr) => {
                         if (err) {

@@ -14,7 +14,7 @@ npm install -g div
 
 Now you'll have the **div** command available on your machine, allowing you to run the following:
 
-- **div new folder-name** - Create a new website with the default starter template
+- **div new folder-name** - Create a new website with the welcome template
 - **div dev** - Start up a dev environment for your website
 - **div build** - Build a production ready version of your website (available in the `site` directory)
 

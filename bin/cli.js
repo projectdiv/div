@@ -53,7 +53,7 @@ describe('bin/div CLI', () => {
 
         expect(output.trim()).toBe([
             "New setup initialized",
-            "Downloading starter template",
+            "Downloading welcome template",
             "Finished downloading template",
             "Extracting template zip file",
             "Finished unzipping",
