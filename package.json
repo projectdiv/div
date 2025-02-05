@@ -1,6 +1,6 @@
 {
     "name": "div",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Website Builder",
     "main": "index.js",
     "scripts": {
