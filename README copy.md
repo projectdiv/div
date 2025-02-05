@@ -1,22 +1,28 @@
-# Div - Website Builder You're Going to Love
+# ⚡️ Static - The Pure Power of Simplicity.
 
-<p><img src="https://raw.githubusercontent.com/projectdiv/div/main/art/logo.png" alt="div logo" /></p>
+<p><img src="https://raw.githubusercontent.com/thedevdojo/static/main/art/github-static-cover.png" alt="github cover" /></p>
 
-A website builder you’ll actually enjoy using. No more bloated frameworks, complicated configs, or dependency chaos. We're taking back the art and reclaiming the throne of crafting simple Static HTML websites 👑
+A static site generator you're going to love. No more complicated configs, bloated frameworks, or feeling like you got kicked in the face by a horse! Here's the spiel:
+
+- Static is **easy**. 
+- HTML is **easy**. 
+- Yet, somehow we lost the art of **crafting simple** Static HTML websites
+
+No longer will this stand! <a href="https://static.devdojo.com" target="_blank"><strong>Static</strong></a> is here to reclaim the throne of simplicity!
 
 ## 🛠️ Setup in a Snap
 
 Make sure you have Node installed on your machine, and then copy/paste the following command in your terminal:
 
 ```
-npm install -g div
+npm install -g @devdojo/static
 ```
 
-Now you'll have the **div** command available on your machine, allowing you to run the following:
+Now you'll have the **static** command available on your machine, allowing you to run the following:
 
-- **div new folder-name** - Create a new website with the default starter template
-- **div dev** - Start up a dev environment for your website
-- **div build** - Build a production ready version of your website (available in the `_site` directory)
+- **static new folder-name** - Create a new website with the static starter template
+- **static dev** - Start up a dev environment of your static website
+- **static build** - Build a production ready version of your website (available in the `_site` directory)
 
 Next, head on over to [the official documentation](https://static.devdojo.com/docs) to learn more about building your site.
 
