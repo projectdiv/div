@@ -1,6 +1,6 @@
-<p align="center"><img src="https://raw.githubusercontent.com/projectdiv/div/main/art/logo.png" alt="div logo" height="30" width="auto" /></p>
+<p><img src="https://raw.githubusercontent.com/projectdiv/div/main/art/logo.png" alt="div logo" height="30" width="auto" /></p>
 
-# Say Hello to Div
+# Say Hello to Div 👋
 
 A website builder you’ll actually enjoy using. No more bloated frameworks, complicated configs, or dependency chaos. We're taking back the art and reclaiming the throne of crafting simple Static HTML websites 👑
 
