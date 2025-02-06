@@ -22,9 +22,9 @@ module.exports = {
             }
         }
 
-        const pagesDir = path.join(currentDirectory, './pages');
-        const contentPagesDir = path.join(currentDirectory, './content');
-        let buildDir = path.join(currentDirectory, './_site');
+        const pagesDir = path.join(currentDirectory, './src/views/pages');
+        const contentPagesDir = path.join(currentDirectory, './src/data/content');
+        let buildDir = path.join(currentDirectory, './site');
 
         if (staticJSON.hasOwnProperty('build')) {
             if (typeof(staticJSON.build.directory) != 'undefined') {
@@ -69,6 +69,10 @@ function removeDirectory(dirPath) {
 }
 
 function buildPages(pagesDir, buildDir, url) {
+    if (!fs.existsSync(pagesDir)) {
+        return;
+    }
+
     const entries = fs.readdirSync(pagesDir, {
         withFileTypes: true
     });

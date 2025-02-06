@@ -14,7 +14,7 @@ const assets = require('./assets.js');
 
 module.exports = {
     welcome() {
-        console.log('Welcome to Static');
+        console.log('Welcome to Div');
     },
     createFolder(folderName) {
         console.log('creating new folder ' + folderName);
@@ -89,12 +89,12 @@ module.exports = {
                     }
 
                     // Start dev server for non-test environment
-                    const devServer = require(require("global-modules-path").getPath("@devdojo/static") + '/src/dev.js');
+                    const devServer = require(require("global-modules-path").getPath("div") + '/src/dev.js');
 
                     console.log('processing template builds and starting dev server');
-                    exec("cd " + process.cwd() + " && npm install && static build", (err, stdout, stderr) => {
+                    exec("cd " + process.cwd() + " && npm install && div build", (err, stdout, stderr) => {
                         if (err) {
-                            console.error("Error building assets, please re-run static dev command.");
+                            console.error("Error building assets, please re-run div dev command.");
                             console.error(err);
                             reject(err);
                             return;

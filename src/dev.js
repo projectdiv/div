@@ -12,14 +12,14 @@ const parser = require('./parser.js');
 const assets = require('./assets.js');
 const liveReloadDefaultPort = 35729;
 const env = require('./env.js');
-const staticFoldersToWatch = ['assets', 'collections', 'content', 'includes', 'layouts', 'pages', 'public'];
+const staticFoldersToWatch = ['src/assets', 'src/data/collections', 'src/data/content', 'src/views/includes', 'src/views/layouts', 'src/views/pages', 'site'];
 const globalModulesPath = require("global-modules-path");
 
 const esbuild = require('esbuild');
 
 module.exports = {
-    start(url='relative', moveAssets = true){
-        if(moveAssets){
+    start(url = 'relative', moveAssets = true) {
+        if (moveAssets) {
             assets.buildJSFile();
             assets.moveImages();
         }
@@ -39,23 +39,23 @@ module.exports = {
 
                 if (staticJSON.hasOwnProperty('dev')) {
                     console.log(staticJSON.dev.url);
-                    if(typeof(staticJSON.dev.url) != 'undefined'){
+                    if (typeof(staticJSON.dev.url) != 'undefined') {
                         url = staticJSON.dev.url;
                     }
                 }
-            
+
                 const liveReloadOptions = {
                     port: liveReloadAvailablePort,
                     exts: ['html', 'css', 'js', 'png', 'gif', 'jpg', 'md']
                 };
                 const liveReloadServer = livereload.createServer(liveReloadOptions);
 
-                for(let i = 0; i < staticFoldersToWatch.length; i++){
+                for (let i = 0; i < staticFoldersToWatch.length; i++) {
                     liveReloadServer.watch(currentDirectory + "/" + staticFoldersToWatch[i] + "/**/*");
                 }
-                
+
                 liveReloadServer.watch(currentDirectory + "/tailwind.config.js");
-                liveReloadServer.watch(currentDirectory + "/_site/assets");
+                liveReloadServer.watch(currentDirectory + "/site/assets");
                 liveReloadServer.server.once("connection", () => {
                     setTimeout(() => {
                         liveReloadServer.refresh("/");
@@ -73,11 +73,11 @@ module.exports = {
 
                 app.use(connectLiveReload(liveReloadOptions));
 
-                
 
-                app.use('/assets', express.static(path.join(currentDirectory, '_site/assets')))
-                app.use('/', express.static(path.join(currentDirectory, 'public/')))
-                
+
+                app.use('/assets', express.static(path.join(currentDirectory, 'site/assets')))
+                app.use('/', express.static(path.join(currentDirectory, 'site/')))
+
                 app.get('/*', (req, res) => {
                     return this.handleRequest(req, res, url);
                 });
@@ -86,7 +86,7 @@ module.exports = {
                     console.log(`Server running at http://localhost:${availablePort}`);
                 });
 
-                
+
 
             }).catch((error) => {
                 console.log('error finding available port for liveReload');
@@ -94,24 +94,24 @@ module.exports = {
             });
 
             return availablePort;
-            
+
         }).catch((error) => {
             console.log('error finding available port number');
             console.log(error);
         });
-        
+
     },
-    handleRequest(req, res, url){
+    handleRequest(req, res, url) {
         const route = req.path === '/' ? '/index' : req.path;
 
         // First we are going to check if we have a content file in this location
-        let contentPath = path.join(currentDirectory, './content', route + '.md');
-        let contentPathIndex = path.join(currentDirectory, './content', route + '/index.md');
+        let contentPath = path.join(currentDirectory, './src/data/content', route + '.md');
+        let contentPathIndex = path.join(currentDirectory, './src/data/content', route + '/index.md');
         let contentFile = null;
 
         if (fs.existsSync(contentPath)) {
             contentFile = parser.processContent(contentPath);
-        } else if(fs.existsSync(contentPathIndex)) {
+        } else if (fs.existsSync(contentPathIndex)) {
             contentFile = parser.processContent(contentPathIndex);
         }
 
@@ -122,38 +122,38 @@ module.exports = {
 
         // If we made it this far we want to now check if the static html file exists
 
-        let pagePath = path.join(currentDirectory, './pages', route + '.html');
-        let pagePathIndex = path.join(currentDirectory, './pages', route, '/index.html');
+        let pagePath = path.join(currentDirectory, './src/views/pages', route + '.html');
+        let pagePathIndex = path.join(currentDirectory, './src/views/pages', route, '/index.html');
         let pageContent = null;
 
         if (fs.existsSync(pagePath)) {
             pageContent = parser.processFile(pagePath);
-        } else if(fs.existsSync(pagePathIndex)) {
+        } else if (fs.existsSync(pagePathIndex)) {
             pageContent = parser.processFile(pagePathIndex);
         }
 
         if (pageContent != null) {
             pageContent = parser.parseURLs(pageContent, url);
-            
+
             return res.send(pageContent);
         }
 
         // otherwise we need to return the Page Not found error
 
-        let page404 = globalModulesPath.getPath("@devdojo/static") + '/src/pages/404.html';
+        let page404 = globalModulesPath.getPath("div") + '/src/pages/404.html';
         if (fs.existsSync(page404)) {
             const page404Content = fs.readFileSync(page404, 'utf8');
             return res.status(404).send(page404Content);
         }
-        res.status(404).send('coo');
+        res.status(404).send('Page Not Found');
         return;
 
     },
     getAvailablePort(port) {
-        
+
         return new Promise((resolve, reject) => {
             const server = net.createServer();
-    
+
             server.once('error', (err) => {
                 if (err.code === 'EADDRINUSE') {
                     // port is currently in use, try the next one
@@ -163,12 +163,12 @@ module.exports = {
                     reject(err);
                 }
             });
-    
+
             server.once('listening', () => {
                 // port is available, close the server and resolve the promise
                 server.close(() => resolve(port));
             });
-    
+
             server.listen(port);
         });
     }
